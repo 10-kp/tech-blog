@@ -1,6 +1,6 @@
 # tech-blog
 
-[![](https://img.shields.io/badge/javascript-100%25-yellow)]()
+<!-- [![](https://img.shields.io/badge/javascript-100%25-yellow)]() -->
 
 ## Description
 
@@ -28,24 +28,24 @@ A CMS-style blog site about tech. Can publish articles, blog posts, and thoughts
 
 - Install the following dependencies:
 
+  - npm express
   - npm install express-handlebars
   - npm install mysql2
   - npm install sequelize
   - npm install dotenv
-  - npm install express
-  - npm install dotenv
+  - npm install bcrypt
+  - npm install express-session
+  - npm install connect-session-sequelize
 
-- Run 'npm run seed' and then 'npm start' or 'node server.js' in the command line
-
-- Open Isomnia and run
+- 'npm start' or 'node server.js' in the command line
 
 ## Technologies
 
-- SQL
-- JavasScript
+- MySql2
+- JavaScript
 - Node
-- Express
-- Insomnia
+- Express, express-handlebars, express-session, connect-session-sequelize
+- Bcrypt
 - Dotenv
 - Heroku
 
