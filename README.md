@@ -44,7 +44,7 @@ A CMS-style blog site about tech. Can publish articles, blog posts, and thoughts
 - MySql2
 - JavaScript
 - Node
-- Express, express-handlebars, express-session, connect-session-sequelize
+- Express, express-handlebars, express-session,connect-session-sequelize
 - Bcrypt
 - Dotenv
 - Heroku
