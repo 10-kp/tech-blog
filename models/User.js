@@ -9,46 +9,54 @@ class User extends Model {
 }
 
 User.init(
-  {
+  {//define ID column
     id: {
+      // use Sequelize DataTypes object to provide type of data  
       type: DataTypes.INTEGER,
+
+      // equivalent of "NOT NULL" in  SQL
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+  //define Username column
+      username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
+    //define password
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      // password must be at least five characters long
       validate: {
-        len: [8],
+        len: [5],
       },
     },
   },
   {
+    //beforeCreate lifecycle "hook" functionality
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
+    // beforeUpdate lifecycle "hook" functionality
+
+      async beforeUpdate(updatedUserData) {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
+      }
     },
+
+    //imported sequelize connection (the direct connection to database)
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
-  }
+    }
 );
 
 module.exports = User;
