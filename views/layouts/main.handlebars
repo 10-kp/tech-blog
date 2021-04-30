@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech-Blog</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
 </head>
 
 <body>
@@ -14,16 +14,16 @@
             <div>
                 <nav class"nav">
                     <a class="link" href="/">Home</a>
-                    <a class="link" href="/dashboard">Dashboard</a>
+                    <a class="link" href="/views/dashboard.handlebars">Dashboard</a>
                     {{#if loggedIn}}
                     <a class="link" href="/" id="logout">Logout</a>
                     {{else}}
-                    <a class="link" href="/login">Login</a>
+                    <a class="link" href="/views/login.handlebars">Login</a>
                     {{/if}}
                 </nav>
             </div>
 
-            <h1 class="app-title"><i class="fab "></i>The Tech Blog</h1>
+            <h1 class="app-title"><i class="fab "></i>Tech Blog</h1>
         </header>
 
         <main>
@@ -32,7 +32,7 @@
     </div>
 
     {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
+    <script src="/public/js/logout.js"></script>
     {{/if}}
 
 </body>
