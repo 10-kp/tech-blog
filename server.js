@@ -1,6 +1,6 @@
 // Dependencies
-const path = require("path");
-const express = require("express"); 
+const path = require('path');
+const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
@@ -27,8 +27,8 @@ const sess = {
   saveUninitialized: true,
   // Sets up session store
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 // Add express-session and store as Express.js middleware

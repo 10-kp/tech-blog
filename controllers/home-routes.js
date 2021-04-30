@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const sequelize = require('../config/connection');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 // Homepage
 router.get('/', async (req, res) => {
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 
     // Pass serialized data and session flag into template
     res.render('homepage', {
-      ...posts,
+      posts,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -52,17 +52,15 @@ router.get('/login', (req, res) => {
 
 //SIGNUP
 router.get('/signup', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-  }
   res.render('signup');
 });
 
 //POST
 router.get('/post/:id', async (req, res) => {
   try {
-    const postData = await Post.Post.findByPk(req.params.id, {
-      attributes: ['id', 'title', 'content', 'created_at'],
+    const postData = await Post.findOne({
+      where: { id: req.params.id },
+      attributes: ['id', 'content', 'title', 'created_at'],
       include: [
         {
           model: Comment,
@@ -87,12 +85,11 @@ router.get('/post/:id', async (req, res) => {
       return;
     }
 
-    const post = postData.map((post) => post.get({ plain: true }));
-    // postData = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     //Past data into template
-    res.render('single_post', {
-      ...post,
+    res.render('single-post', {
+      post,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -100,10 +97,11 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-router.get('/create/', withAuth, async (req, res) => {
+router.get('/posts-comments', async (req, res) => {
   try {
-    const postData = await Post.findAll({
-      attributes: ['id', 'title', 'content', 'created_at'],
+    const postData = await Post.findOne({
+      where: { id: req.params.id },
+      attributes: ['id', 'content', 'title', 'created_at'],
       where: { user_id: req.params.user_id },
       include: [
         {
@@ -130,11 +128,10 @@ router.get('/create/', withAuth, async (req, res) => {
     }
 
     postData = postData.get({ plain: true });
-    // postData = postData.get({ plain: true });
 
-    res.render('edit-post', {
-      ...post,
-      logged_in: true,
+    res.render('post-comments', {
+      post,
+      logged_in: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
