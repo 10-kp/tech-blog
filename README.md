@@ -1,6 +1,8 @@
 # tech-blog
 
-<!-- [![](https://img.shields.io/badge/javascript-100%25-yellow)]() -->
+[![](https://img.shields.io/badge/javascript-68%25-yellow)]()
+[![](https://img.shields.io/badge/CSS-19%25-blue)]()
+[![](https://img.shields.io/badge/Handlbars-13%25-red)]()
 
 ## Description
 
@@ -34,7 +36,7 @@ A CMS-style blog site about tech. Can publish articles, blog posts, and thoughts
   - npm install sequelize
   - npm install dotenv
   - npm install bcrypt
-  - npm install express-session
+  - npm install express-sessiongit
   - npm install connect-session-sequelize
 
 - 'npm start' or 'node server.js' in the command line
@@ -51,7 +53,8 @@ A CMS-style blog site about tech. Can publish articles, blog posts, and thoughts
 
 ## Link
 
-[GitHub Link](https://github.com/10-kp/eCommerceBackEnd)
+[GitHub Link](https://github.com/10-kp/tech-blog)
+
 [Heroku Link]()
 
 ## License
