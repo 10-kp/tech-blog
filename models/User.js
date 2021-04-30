@@ -9,9 +9,10 @@ class User extends Model {
 }
 
 User.init(
-  {//define ID column
+  {
+    //define ID column
     id: {
-      // use Sequelize DataTypes object to provide type of data  
+      // use Sequelize DataTypes object to provide type of data
       type: DataTypes.INTEGER,
 
       // equivalent of "NOT NULL" in  SQL
@@ -19,11 +20,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-  //define Username column
-      username: {
+    //define Username column
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
     },
     //define password
     password: {
@@ -42,12 +43,15 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-    // beforeUpdate lifecycle "hook" functionality
+      // beforeUpdate lifecycle "hook" functionality
 
       async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
-      }
+      },
     },
 
     //imported sequelize connection (the direct connection to database)
@@ -56,7 +60,7 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
-    }
+  }
 );
 
 module.exports = User;

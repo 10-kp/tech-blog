@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+// Create connection to database. pass in your MySQL information for username and password
 let sequelize;
+
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
@@ -12,7 +14,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      port: 3306
+      port: 3306,
     }
   );
 }
