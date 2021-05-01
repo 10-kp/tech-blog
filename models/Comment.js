@@ -11,6 +11,12 @@ Comment.init(
       autoIncrement: true,
     },
 
+    comment_text: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [3],
+      },
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -25,12 +31,6 @@ Comment.init(
       references: {
         model: 'post',
         key: 'id',
-      },
-    },
-    comment_text: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [3],
       },
     },
   },

@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   })
     .then((userData) => res.json(userData))
     .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });
@@ -96,6 +97,7 @@ router.post('/login', (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });
@@ -143,6 +145,7 @@ router.delete('/:id', (req, res) => {
       res.json(userData);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });

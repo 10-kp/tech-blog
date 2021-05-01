@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 //LOGIN
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
@@ -94,6 +94,7 @@ router.get('/post/:id', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -130,7 +131,7 @@ router.get('/posts-comments', async (req, res) => {
 
     postData = postData.get({ plain: true });
 
-    res.render('post-comments', {
+    res.render('posts-comments', {
       post,
       loggedIn: req.session.loggedIn,
     });

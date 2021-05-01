@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
-// const { post } = require('./homeRoutes');
+const { post } = require('./home-routes');
 
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -36,7 +36,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/edit/id', withAuth, async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: { id: req.params.id },
