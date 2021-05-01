@@ -1,7 +1,6 @@
+const sequelize = require('../config/connection');
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
-const sequelize = require('../config/connection');
-// const withAuth = require('../utils/auth');
 
 // Homepage
 router.get('/', async (req, res) => {
@@ -33,7 +32,7 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', {
       posts,
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -85,12 +84,14 @@ router.get('/post/:id', async (req, res) => {
       return;
     }
 
-    const post = postData.get({ plain: true });
+    // const post = postData.get({ plain: true });
+    postData = postData.get({ plain: true });
+    console.log(post);
 
     //Past data into template
     res.render('single-post', {
       post,
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -131,7 +132,7 @@ router.get('/posts-comments', async (req, res) => {
 
     res.render('post-comments', {
       post,
-      logged_in: req.session.loggedIn,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
