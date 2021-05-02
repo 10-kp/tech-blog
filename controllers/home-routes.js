@@ -84,8 +84,8 @@ router.get('/post/:id', async (req, res) => {
       return;
     }
 
-    // const post = postData.get({ plain: true });
-    postData = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
+    // postData = postData.get({ plain: true });
     console.log(post);
 
     //Past data into template
