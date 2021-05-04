@@ -1,15 +1,15 @@
 async function editFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="post-title"]').value.trim();
-  const content = document.querySelector('input[name="content"]').value.trim();
-  console.log(title);
-  console.log(content);
-
+  // Get post id from the url
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
 
+  const title = document.querySelector('input[name="post-title"]').value;
+  const content = document.querySelector('textarea[name="content"]').value;
+
+  // Get post title and post text from the form
   const response = await fetch(`/api/posts/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -22,8 +22,9 @@ async function editFormHandler(event) {
     },
   });
 
+  // if the edit action is successful, redirect to the dashboard page. Else display the error
   if (response.ok) {
-    document.location.replace('/dashboard/');
+    document.location.replace('/dashboard');
   } else {
     alert(response.statusText);
   }
