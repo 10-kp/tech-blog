@@ -3,6 +3,10 @@ const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Routes
+
+// Get all posts
+
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -37,6 +41,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get a single post by id
 router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findOne({
@@ -74,6 +79,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Create a new post with Auth
 router.post('/', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
@@ -86,19 +92,13 @@ router.post('/', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
+// Update a post's title or text
 router.put('/:id', withAuth, (req, res) => {
-  Post.update(
-    {
-      title: req.body.title,
-      content: req.body.content,
+  Post.update({
+    where: {
+      id: req.params.id,
     },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
+  })
     .then((postData) => {
       if (!postData) {
         res.status(404).json({ message: 'No post found with this id' });
@@ -111,6 +111,8 @@ router.put('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// Delete a post
 router.delete('/:id', withAuth, (req, res) => {
   Post.destroy({
     where: {

@@ -10,12 +10,6 @@ async function deleteFormHandler(event) {
   // Delete the post
   const response = await fetch(`/api/posts/${id}`, {
     method: 'DELETE',
-    // body: JSON.stringify({
-    //   post_id: id,
-    // }),
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
   });
 
   // if the delete action is successful, redirect to the dashboard page, otherwise display the error
