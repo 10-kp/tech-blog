@@ -16,7 +16,7 @@ async function signupFormHandler(event) {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      console.log('success');
+      console.log('Account created! Logging you in now.');
 
       document.location.replace('/dashboard');
     } else {
@@ -26,5 +26,5 @@ async function signupFormHandler(event) {
 }
 
 document
-  .querySelector('#signup-form')
+  .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);

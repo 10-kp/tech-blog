@@ -8,14 +8,14 @@ html {
   padding: 10px;
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(12, 146, 30);
+  color: rgb(24, 36, 25);
 }
 
 a {
   text-decoration: auto;
   color: #225ca3;
-  font-weight: lighter;
-  color: black;
+  font-weight: bold;
+  color: rgb(9, 33, 170);
 }
 
 a:hover {
