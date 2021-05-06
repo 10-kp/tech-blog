@@ -2,10 +2,10 @@
     <div class="column">
         <h2>Create New Post</h2>
 
-        <form class="new-post-form">
+        <form class="create-form" action="/api/posts" method="POST">
             <div>
                 <label for="post-title">Title</label>
-                <input type="text" id="post-title" name="post-title" />
+                <input type="text" id="title" name="post-title" placeholder="title">
             </div>
             <div>
                 <label for="post-text">Text</label>

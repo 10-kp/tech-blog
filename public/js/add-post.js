@@ -2,30 +2,33 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  // Get post title and post text from the form
+  // Get the post title and post text from the form
   const title = document.querySelector('input[name="post-title"]').value;
   const content = document.querySelector('input[name="content"]').value;
 
+  // use the add a new post POST route to add the post
+  // user id is added from the session information in the route
   const response = await fetch(`/api/posts`, {
     method: 'POST',
     body: JSON.stringify({
       title,
-      content,
+      post_text,
     }),
     headers: {
       'Content-Type': 'application/json',
     },
   });
 
-  // If response is okay, reload the page showing the newest post now in the user's post list
+  // if the response is okay, reload the page, showing the newest post now in the user's post list
   if (response.ok) {
     document.location.replace('/dashboard');
-
-    // Else, display the error
+    // otherwise, display the error
   } else {
     alert(response.statusText);
   }
 }
 
 // Event Listener for the new post submit button
-document.addEventListener('submit', newFormHandler);
+document
+  .querySelector('#new-post-form')
+  .addEventListener('submit', newFormHandler);

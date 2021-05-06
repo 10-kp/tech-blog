@@ -80,13 +80,16 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new post with Auth
-router.post('/', withAuth, (req, res) => {
+router.post('/posts', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
     user_id: req.session.user_id,
   })
-    .then((postData) => res.json(postData))
+    .then((postData) => {
+      console.log(postData, 'post-creation');
+      res.json(postData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
