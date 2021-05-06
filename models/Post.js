@@ -21,7 +21,11 @@ Post.init(
 
     content: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        // post must be at least one character long
+        len: [1],
+      },
     },
 
     user_id: {
