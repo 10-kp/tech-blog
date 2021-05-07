@@ -9,8 +9,6 @@ const { Post, User, Comment } = require('../models');
 // Middleware authorization to redirect unauthenticated users to the login page
 const withAuth = require('../utils/auth');
 
-// const { post } = require('./home-routes');
-
 // Render dashboard page - only for a logged-in user
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -73,9 +71,9 @@ router.get('/edit/:id', withAuth, async (req, res) => {
       return;
     }
 
-    postData = postData.get({ plain: true });
+    postDataNew = postData.get({ plain: true });
     res.render('edit-post', {
-      postData,
+      postDataNew,
       loggedIn: true,
     });
   } catch (err) {
