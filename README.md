@@ -55,7 +55,7 @@ A CMS-style blog site about tech. Can publish articles, blog posts, and thoughts
 
 [GitHub Link](https://github.com/10-kp/tech-blog)
 
-[Heroku Link]()
+[Heroku Link](https://nameless-ridge-55768.herokuapp.com/)
 
 ## License
 
