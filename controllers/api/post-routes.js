@@ -80,7 +80,8 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new post with Auth
-router.post('/posts', withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
+  console.log('error');
   Post.create({
     title: req.body.title,
     content: req.body.content,

@@ -1,10 +1,12 @@
 // New Post Form Handler
-async function newFormHandler(event) {
+const newFormHandler = async (event) => {
   event.preventDefault();
 
   // Get the post title and post text from the form
-  const title = document.querySelector('input[name="post-title"]').value;
-  const content = document.querySelector('input[name="content"]').value;
+  const title = document.querySelector('input[name="post-title"]').value.trim();
+  const post_text = document
+    .querySelector('textarea[name="post-text"]')
+    .value.trim();
 
   // use the add a new post POST route to add the post
   // user id is added from the session information in the route
@@ -12,7 +14,7 @@ async function newFormHandler(event) {
     method: 'POST',
     body: JSON.stringify({
       title,
-      post_text,
+      content: post_text,
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -26,9 +28,9 @@ async function newFormHandler(event) {
   } else {
     alert(response.statusText);
   }
-}
+};
 
 // Event Listener for the new post submit button
 document
-  .querySelector('#new-post-form')
+  .querySelector('.create-form')
   .addEventListener('submit', newFormHandler);

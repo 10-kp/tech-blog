@@ -1,5 +1,5 @@
 // A function to delete a post
-async function deleteFormHandler(event) {
+async function delButtonHandler(event) {
   event.preventDefault();
 
   // Get the post id from the url
@@ -22,4 +22,4 @@ async function deleteFormHandler(event) {
 
 document
   .querySelector('.delete-post-btn')
-  .addEventListener('click', deleteFormHandler);
+  .addEventListener('click', delButtonHandler);
