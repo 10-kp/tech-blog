@@ -1,3 +1,4 @@
+// A function to edit a post
 async function editFormHandler(event) {
   event.preventDefault();
 
@@ -7,7 +8,7 @@ async function editFormHandler(event) {
   ];
 
   const title = document.querySelector('input[name="post-title"]').value;
-  const content = document.querySelector('textarea[name="content"]').value;
+  const post_text = document.querySelector('textarea[name="post_text"]').value;
 
   // Get post title and post text from the form
   const response = await fetch(`/api/posts/${id}`, {
